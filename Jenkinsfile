@@ -50,7 +50,7 @@ pipeline {
                 script {
                     sh '''
                     docker rm -f myapp || true
-                    docker run -d -p 8080:8080 --name myapp $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPO:$IMAGE_TAG
+                    docker run -d -p 8000:8000 --name myapp $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPO:$IMAGE_TAG
                     '''
                 }
             }
