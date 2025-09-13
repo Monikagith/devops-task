@@ -27,8 +27,8 @@ pipeline {
             steps {
                 script {
                     sh '''
-                    aws ecr get-login-password --region $AWS_DEFAULT_REGION \
-                    | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+                    aws ecr get-login-password --region ap-south-1 \
+                    | docker login --username AWS --password-stdin 664418956210.dkr.ecr.ap-south-1.amazonaws.com
                     '''
                 }
             }
@@ -50,7 +50,7 @@ pipeline {
                 script {
                     sh '''
                     docker rm -f myapp || true
-                    docker run -d -p 8080:8080 --name myapp $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPO:$IMAGE_TAG
+                    docker run -d -p 3000:3000 --name myapp $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPO:$IMAGE_TAG
                     '''
                 }
             }
